@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  namespace =  mapper对应接口的全限定符 -->
+<mapper namespace="com.gxz.mapper.EmployeeMapper">
+    <!-- 标签select insert update delete:每个都对应接口的一个方法
+     注意： mapper接口中的方法不能重载：因为mapper.xml根据方法名识别，无法识别重载！-->
+    <select id="queryById" resultType="com.gxz.pojo.Employee">
+        select emp_id empId,emp_name empName, emp_salary empSalary from
+        t_emp where emp_id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from t_emp where emp_id = #{id}
+    </delete>
+</mapper>

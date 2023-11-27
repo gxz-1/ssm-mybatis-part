@@ -1,4 +1,4 @@
-package org.gxz.pojo;
+package com.gxz.pojo;
 
 public class Employee {
 
@@ -12,9 +12,7 @@ public class Employee {
         return empId;
     }
     //getter | setter
-    public void setEmpId(Integer empId) {
-        this.empId = empId;
-    }
+    public void setEmpId(Integer empId) {this.empId = empId;}
 
     public String getEmpName() {
         return empName;
@@ -32,4 +30,12 @@ public class Employee {
         this.empSalary = empSalary;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "empId=" + empId +
+                ", empName='" + empName + '\'' +
+                ", empSalary=" + empSalary +
+                '}';
+    }
 }
