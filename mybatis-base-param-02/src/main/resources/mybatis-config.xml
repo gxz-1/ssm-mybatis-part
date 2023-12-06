@@ -7,6 +7,8 @@
     <settings>
         <!-- 开启了 mybatis的日志输出，选择使用system进行控制台输出-->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--开启驼峰式自动映射 数据库 a_column java aColumn -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
     <!-- environments表示配置Mybatis的开发环境，可以配置多个环境，default指定实际运行时环境。-->

@@ -7,15 +7,18 @@
     <!-- #{}：转换为？问号占位符，只能替代值的位置 (推荐 防止注入攻击)
          ${}：形式传参，底层Mybatis做的是字符串拼接操作 -->
     <select id="queryById" resultType="com.gxz.pojo.Employee">
-        select emp_id empId,emp_name empName, emp_salary empSalary from
-        t_emp where emp_id = ${id}
+<!--        select emp_id empId,emp_name empName, emp_salary empSalary from-->
+<!--        在settting中开启sql命名到java小驼峰命名的自动映射后，就不用指定别名了-->
+<!--        mybatis将自动从数据库的列名映射到Employee类的属性名-->
+        select * from t_emp where emp_id = ${id}
     </select>
 
     <!--场景1： 传入的单个简单类型：key随便写（推荐：使用参数名）-->
     <delete id="deleteById">
         delete from t_emp where emp_id = #{ suibian }
     </delete>
-
+    <!--对于集合返回值，指定泛型即可-->
+    <!-- 原因：所有的select查询底层都是调用selectList，本来就是查询集合-->
     <select id="queryBySalary" resultType="com.gxz.pojo.Employee">
         select emp_id empId , emp_name empName , emp_salary empSalary
         from t_emp where emp_salary = #{ salary }
