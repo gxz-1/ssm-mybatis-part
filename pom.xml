@@ -7,6 +7,11 @@
     <groupId>com.gxz</groupId>
     <artifactId>ssm-mybatis-part</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>mybatis-base-param-02</module>
+        <module>mabatis-base-start-01</module>
+    </modules>
 
     <dependencies>
         <!-- mybatis依赖 -->
