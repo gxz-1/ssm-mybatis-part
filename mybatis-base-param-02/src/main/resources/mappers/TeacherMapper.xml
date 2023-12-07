@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxz.mapper.TeacherMapper">
+    <insert id="insertTeacher">
+        <!-- 非自增长主键的回显:使用selectKey在插入前生成主键值-->
+        <!-- order=BEFORE/AFTER 语句在之前还是之后执行 resultType返回值类型 keyProperty指定接收主键值的属性-->
+        <selectKey order="BEFORE" resultType="string" keyProperty="tId">
+            select replace(UUID(),'-','');
+        </selectKey>
+        insert into teacher (t_id,t_name) values(#{tId},#{tName});
+    </insert>
+
+    <!-- 列名和属性名不一致如何解决?
+    1.sql语句中起别名 2.驼峰式自动映射到resultType(不支持多层查询) 3.使用resultMap自定义映射(支持多层嵌套查询)-->
+    <resultMap id="tMap" type="com.gxz.pojo.Teacher"> <!--type指定要映射的java类-->
+        <!-- 使用id标签设置主键列和主键属性之间的对应关系 -->
+        <id column="t_id" property="tId"/>
+        <!-- 使用result标签设置普通字段和Java实体类属性之间的关系 -->
+        <result column="t_name" property="tName"/>
+    </resultMap>
+
+    <select id="queryById" resultMap="tMap">
+        select * from teacher where t_id=#{tId};
+    </select>
+</mapper>

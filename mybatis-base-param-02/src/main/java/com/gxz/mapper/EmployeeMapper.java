@@ -16,14 +16,13 @@ public interface EmployeeMapper {
      List<Employee> queryBySalary(Double salary);
 
      //场景2：插入员工数据 【实体对象】
-     int insertEmp(Employee employee);
+     int insertEmp(Employee employee);//自增长的主键设置
 
      //场景3：根据员工姓名和工资查询员工信息
      List<Employee> queryByNameAndSalary(@Param("a")String name, @Param("b") Double salary);
 
      //场景4：插入员工数据，传入的是一个map(name=员工的名字,salary=员工的薪水)
      int insertEmpMap(Map data);
-
 
 
 
