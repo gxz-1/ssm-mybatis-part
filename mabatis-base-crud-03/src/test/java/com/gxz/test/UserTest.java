@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class UserTest {
     private SqlSession sqlSession;
@@ -32,18 +33,23 @@ public class UserTest {
         user.setPassword("123456");
         mapper.insert(user);
         System.out.println(user);
+        List<User> userList = mapper.selectAll();//查询所有
+        System.out.println("userList = " + userList);
         //测试更新
-//        User user = new User();
-        user.setId(0);
-        user.setUsername("简分担");
+        user.setId(1);
+        user.setUsername("newadmin");
         user.setPassword("25879");
         int update = mapper.update(user);
         System.out.println("update = " + update);
+        //测试查询
+        User user1 = mapper.selectById(1);
+        System.out.println("user1 = " + user1);
         //测试删除
-
+        int delete = mapper.delete(1);
+        System.out.println("delete = " + delete);
     }
 
-    @AfterEach
+    @AfterEach //每次运行Test之后都运行这段代码
     public void clean(){
         sqlSession.close();
     }

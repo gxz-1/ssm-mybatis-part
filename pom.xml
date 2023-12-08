@@ -12,6 +12,7 @@
         <module>mybatis-base-param-02</module>
         <module>mabatis-base-start-01</module>
         <module>mabatis-base-crud-03</module>
+        <module>untitled</module>
     </modules>
 
     <dependencies>
