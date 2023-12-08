@@ -2,6 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--总结：从数据库到java类的数据传递，需要resultMap或resultType指定-->
 <mapper namespace="com.gxz.mapper.TeacherMapper">
     <insert id="insertTeacher">
         <!-- 非自增长主键的回显:使用selectKey在插入前生成主键值-->

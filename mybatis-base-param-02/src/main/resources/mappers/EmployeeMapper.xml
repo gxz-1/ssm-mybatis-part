@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<!--总结：从java类到数据库的数据传递，通过#或$实现，有传入单个类型、实体类、注解指定和map四种情况-->
 <mapper namespace="com.gxz.mapper.EmployeeMapper">
     <!-- #{}：转换为？问号占位符，只能替代值的位置 (推荐 防止注入攻击)
          ${}：形式传参，底层Mybatis做的是字符串拼接操作 -->
