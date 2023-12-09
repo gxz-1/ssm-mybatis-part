@@ -1,7 +1,8 @@
 package com.gxz.test;
 
-import com.gxz.mapper.UserMapper;
-import com.gxz.pojo.User;
+import com.gxz.mapper.CustomerMapper;
+import com.gxz.pojo.Order;
+import com.gxz.mapper.OrderMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class UserTest {
+public class MabatisTest {
     private SqlSession sqlSession;
 
     @BeforeEach //每次运行Test之前都运行这段代码
@@ -26,33 +27,22 @@ public class UserTest {
 
     @Test
     public void test() throws IOException {
-        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        //测试添加
-        User user = new User();
-        user.setUsername("admin");
-        user.setPassword("123456");
-        mapper.insert(user);
-        System.out.println(user);
-        List<User> userList = mapper.selectAll();//查询所有
-        System.out.println("userList = " + userList);
-        //测试更新
-        user.setId(1);
-        user.setUsername("newadmin");
-        user.setPassword("25879");
-        int update = mapper.update(user);
-        System.out.println("update = " + update);
-        //测试查询
-        User user1 = mapper.selectById(1);
-        System.out.println("user1 = " + user1);
-        //测试删除
-        int delete = mapper.delete(1);
-        System.out.println("delete = " + delete);
+        OrderMapper mapper = sqlSession.getMapper(OrderMapper.class);
+        //测试对一的多表查询
+        Order order = mapper.queryByOrderId(2);
+        System.out.println("order = " + order);
+    }
+
+    @Test
+    public void test2() throws IOException{
+        CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
+        List<Order> orderList = mapper.QueryAllOrder();
+        System.out.println("orderList = " + orderList);
     }
 
     @AfterEach //每次运行Test之后都运行这段代码
     public void clean(){
         sqlSession.close();
     }
-
 
 }

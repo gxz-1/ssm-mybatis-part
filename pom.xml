@@ -13,6 +13,7 @@
         <module>mabatis-base-start-01</module>
         <module>mabatis-base-crud-03</module>
         <module>untitled</module>
+        <module>mabatis-advance-multitable-01</module>
     </modules>
 
     <dependencies>

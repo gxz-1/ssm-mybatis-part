@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gxz.mapper.CustomerMapper">
+    <resultMap id="customerMap" type="com.gxz.pojo.Customer">
+        <id column="customer_id" property="customerId"/>
+        <result column="customer_name" property="customerName"/>
+        <!-- 给集合赋值collection，实现多表查询的属性映射-->
+        <collection property="orderList" ofType="com.gxz.pojo.Order">
+        <!-- property：集合的属性名 ofType：泛型的类型-->
+            <id column="order_id" property="orderId"/>
+            <result column="order_name" property="orderName"/>
+            <result column="customer_id" property="customerId"/>
+        </collection>
+    </resultMap>
+
+    <select id="QueryAllOrder" resultMap="customerMap">
+        select * from t_order a join t_customer b on a.customer_id=b.customer_id;
+    </select>
+</mapper>
