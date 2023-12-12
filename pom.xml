@@ -10,10 +10,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>mybatis-base-param-02</module>
-        <module>mabatis-base-start-01</module>
-        <module>mabatis-base-crud-03</module>
-        <module>untitled</module>
-        <module>mabatis-advance-multitable-01</module>
+        <module>mybatis-base-start-01</module>
+        <module>mybatis-base-crud-03</module>
+        <module>mybatis-advance-dynsql-02</module>
+        <module>mybatis-advance-multitable-01</module>
+        <module>mybatis-advance-extend-03</module>
     </modules>
 
     <dependencies>
@@ -37,7 +38,12 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.3.1</version>
         </dependency>
-
+        <!--mybatis的pagehelper插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.11</version>
+        </dependency>
     </dependencies>
 
     <properties>

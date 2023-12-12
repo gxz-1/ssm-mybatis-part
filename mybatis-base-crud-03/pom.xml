@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>mabatis-base-start-01</artifactId>
+    <artifactId>mybatis-base-crud-03</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
