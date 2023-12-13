@@ -5,7 +5,7 @@
 <mapper namespace="com.gxz.mapper.EmployeeMapper">
     <select id="query" resultType="com.gxz.pojo.Employee">
         select * from t_emp
-        <!-- 动态添加where关键字：1.内部有任一if满足条件则拼接where，否则不添加，2.自动去掉多余的and和or-->
+        <!--  动态添加where关键字：1.内部有任一if满足条件则拼接where，否则不添加，2.自动去掉多余的and和or-->
         <where>
             <!-- 通过if语句实现动态sql语句,test为true将标签内的sql进行拼接-->
             <!-- 语法：参数 比较符号 值 and|or 参数 比较符号 值),不推荐直接使用符号，大于：&gt; 小于 &lt;-->

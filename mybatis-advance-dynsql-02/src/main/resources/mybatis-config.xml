@@ -23,7 +23,7 @@
             <!-- 配置数据源
                  POOLED（推荐） mybatis帮助我们维护一个链接池 | UNPOOLED 每次都新建或者释放链接-->
             <dataSource type="POOLED">
-                <!-- 建立数据库连接的具体信息 -->
+                <!--  建立数据库连接的具体信息 -->
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://202.115.16.29:9875/mybatis-example?allowMultiQueries=true"/>
                 <property name="username" value="admin"/>
