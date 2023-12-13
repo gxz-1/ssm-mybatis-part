@@ -18,7 +18,7 @@ public class MybatisTest {
 
     private SqlSession sqlSession;
 
-    @BeforeEach //每次运行Test之前都运行这段代码
+    @BeforeEach // 每次运行Test之前都运行这段代码
     public void init() throws IOException {
         InputStream ips = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(ips);
