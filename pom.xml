@@ -11,9 +11,9 @@
     <modules>
         <module>mybatis-base-param-02</module>
         <module>mybatis-base-start-01</module>
-        <module>mybatis-base-crud-03</module>
-        <module>mybatis-advance-dynsql-02</module>
+        <module>mybatis-base-crud-03</module>geng
         <module>mybatis-advance-multitable-01</module>
+        <module>mybatis-advance-dynsql-02</module>
         <module>mybatis-advance-extend-03</module>
     </modules>
 

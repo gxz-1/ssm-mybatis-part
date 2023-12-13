@@ -28,13 +28,9 @@ public class MybatisTest {
     @Test
     public void test() throws IOException {
         EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-        List<Employee> employeeList = mapper.query(null, 99.0);//两个条件都不生效
+        List<Employee> employeeList = mapper.query(null, 100.0);//两个条件都不生效
         System.out.println("employeeList = " + employeeList);
-        employeeList = mapper.query(null, 777.77);//salary条件生效
-        System.out.println("employeeList = " + employeeList);
-        employeeList = mapper.query("tom", null);//name条件生效
-        System.out.println("employeeList = " + employeeList);
-        employeeList = mapper.query("tom", 200.33);//两个条件都生效
+        employeeList = mapper.query(null, 700.0);//salary条件生效
         System.out.println("employeeList = " + employeeList);
     }
 

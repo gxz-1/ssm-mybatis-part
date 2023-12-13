@@ -6,7 +6,7 @@
 <mapper namespace="com.gxz.mapper.EmployeeMapper">
     <!-- #{}：转换为？问号占位符，只能替代值的位置 (推荐 防止注入攻击)
          ${}：形式传参，底层Mybatis做的是字符串拼接操作 -->
-    <select id="queryById" resultType="com.gxz.pojo.Employee">
+    <select id="queryById" resultType="com.gxz.com.gxz.pojo.Employee">
 <!--        select emp_id empId,emp_name empName, emp_salary empSalary from-->
 <!--        在settting中开启sql命名到java小驼峰命名的自动映射后，就不用指定别名了-->
 <!--        mybatis将自动从数据库的列名映射到Employee类的属性名-->
@@ -19,7 +19,7 @@
     </delete>
     <!--对于集合返回值，指定泛型即可-->
     <!-- 原因：所有的select查询底层都是调用selectList，本来就是查询集合-->
-    <select id="queryBySalary" resultType="com.gxz.pojo.Employee">
+    <select id="queryBySalary" resultType="com.gxz.com.gxz.pojo.Employee">
         select emp_id empId , emp_name empName , emp_salary empSalary
         from t_emp where emp_salary = #{ salary }
     </select>
@@ -33,7 +33,7 @@
 
     <!--场景3：  方案1： 注解指定  @Param注解  指定多个简单参数的key   key = @Param("value值")  [推荐]
                 方案2： mybatis默认机制：形参左到右依次对应 arg0 arg1.. 或 param1 param2.. -->
-    <select id="queryByNameAndSalary" resultType="com.gxz.pojo.Employee">
+    <select id="queryByNameAndSalary" resultType="com.gxz.com.gxz.pojo.Employee">
         select emp_id empId , emp_name empName , emp_salary empSalary
         from t_emp where emp_name = #{a} and emp_salary = #{b}
     </select>

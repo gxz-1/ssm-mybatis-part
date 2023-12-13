@@ -5,7 +5,7 @@
 <mapper namespace="com.gxz.mapper.EmployeeMapper">
     <select id="query" resultType="com.gxz.pojo.Employee">
         select * from t_emp
-        <!-- 动态添加where关键字：1.内部有任一if满足条件则拼接where，否则不添加，2.自动去掉多余的and和or-->
+        <!-- 动态添加where关键字：1.内部有任一if满足条件添加where，否则不添加，2.自动去掉多余的and和or-->
         <where>
             <!-- 通过if语句实现动态sql语句,test为true将标签内的sql进行拼接-->
             <!-- 语法：参数 比较符号 值 and|or 参数 比较符号 值),不推荐直接使用符号，大于：&gt; 小于 &lt;-->
@@ -13,71 +13,8 @@
                 emp_name = #{name}
             </if>
             <if test="salary != null and salary &gt; 100">
-                and emp_salary= #{salary}
+                emp_salary= #{salary}
             </if>
         </where>
     </select>
-
-    <update id="updateById">
-        update t_emp
-        <!-- 动态添加where关键字：1.拼接set（需要满足至少一个条件满足，否则update语法本身报错）2.自动去掉多余的逗号，-->
-        <set>
-            <if test="empName != null">
-                emp_name=#{empName},
-            </if>
-            <if test="empSalary !=null">
-                emp_salary=#{empSalary}
-            </if>
-        </set>
-        where emp_id=#{empId}
-    </update>
-
-    <select id="query" resultType="com.gxz.pojo.Employee">
-        select * from t_emp
-        where
-            <choose>
-            <!-- choose从前往后匹配一个满足的条件-->
-                <when test="name != null">
-                    emp_name = #{name}
-                </when>
-                <when test="salary != null and salary &gt; 100">
-                    emp_salary= #{salary}
-                </when>
-                <otherwise>1=1</otherwise>
-            </choose>
-    </select>
-
-    <!-- 根据id的批量查询-->
-    <select id="queryBatch" resultType="employee">
-        select * from t_emp
-        where emp_id in
-        <!-- foreach遍历：collection为遍历的集合名，由@Param指定-->
-        <foreach collection="ids" open="(" separator="," close=")" item="id">
-            <!-- #{由item指定}-->
-            #{id}
-        </foreach>
-    </select>
-    <!-- 根据id的批量删除-->
-    <delete id="deleteBatch">
-        delete from t_emp where id in
-        <foreach collection="ids" open="("  separator="," close=")" item="id">
-            #{id}
-        </foreach>
-    </delete>
-    <!-- 根据id的批量插入-->
-    <insert id="insertBatch">
-        insert into t_emp (emp_name,emp_salary)
-        values
-        <foreach collection="list" separator="," item="emp">
-            ( #{emp.empName}, #{emp.empSalary} )
-        </foreach>
-    </insert>
-    <!-- 根据id的批量更新-->
-    <!-- 如果一个标签涉及多个语句，需要在property的url中设置允许指定多语句allowMultiQueries=true-->
-    <update id="updateBatch">
-        <foreach collection="list" item="emp">
-            update t_emp set emp_name = #{emp.empName} , emp_salary = #{emp.empSalary}
-            where  emp_id = #{emp.empId} ;
-        </foreach>
-    </update>
 </mapper>
